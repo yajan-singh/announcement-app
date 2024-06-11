@@ -4,11 +4,13 @@ import Box from "@mui/material/Box";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Button from "@mui/material/Button";
 import { useRef } from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import DiscordService from "./DiscordService.js";
+import TelegramUpdates from "./TelegramService.js";
+import WhatsAppService from "./WhatsAppService.js";
 
 function App() {
   const [state, setState] = useState({
@@ -35,18 +37,16 @@ function App() {
     if (!textRef.current.value || temp === "") {
       return;
     }
-
-    console.log(textRef.current.value);
     textRef.current.value = "";
     if (checkedDiscord) {
       DiscordService.send(announcementText);
-      console.log("Discord");
     }
     if (checkedTelegram) {
-      console.log("Telegram");
+      TelegramUpdates.send(announcementText);
     }
     if (checkedWhatsApp) {
       console.log("WhatsApp");
+      WhatsAppService.send(announcementText);
     }
   };
   const handleCheck = (event) => {
