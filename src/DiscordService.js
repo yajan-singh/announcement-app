@@ -5,7 +5,7 @@ const DiscordService = {
   send: async (data) => {
     const body = { content: data };
     try {
-      await axios.post(config.DISCORD_WEBHOOK_URL, body);
+      await axios.post(config.discordWebhook, body);
     } catch (error) {
       console.error(error);
     }
