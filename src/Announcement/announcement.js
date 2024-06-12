@@ -10,6 +10,7 @@ import Checkbox from "@mui/material/Checkbox";
 import DiscordService from "./DiscordService.js";
 import TelegramUpdates from "./TelegramService.js";
 import WhatsAppService from "./WhatsAppService.js";
+import "./announcement.css";
 
 function Announcement() {
   const [state, setState] = useState({

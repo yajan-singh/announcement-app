@@ -11,19 +11,10 @@ import "./App.css";
 // import DiscordService from "./Announcement/DiscordService.js";
 // import TelegramUpdates from "./Announcement/TelegramService.js";
 // import WhatsAppService from "./Announcement/WhatsAppService.js";
-import { Routes, Route } from "react-router-dom";
-import Home from "./Home/home.js";
-import Announcement from "./Announcement/announcement.js";
 
 function App() {
   return (
-    <Routes>
-      <Route exact path="/">
-        {" "}
-        component={Home}{" "}
-      </Route>
-      <Route path="/announcement"> component={Announcement} </Route>
-    </Routes>
+    <div></div>
   );
 }
 
