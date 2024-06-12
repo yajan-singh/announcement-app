@@ -1,4 +1,11 @@
 import "./home.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faTelegram,
+  faDiscord,
+  faWhatsapp,
+} from "@fortawesome/free-brands-svg-icons";
+
 function Home() {
   return (
     <div className="home">
@@ -9,17 +16,33 @@ function Home() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <i class="fa-brands fa-telegram fa-5x">   </i>
+            <FontAwesomeIcon
+              className="faIcon faTelegram"
+              icon={faTelegram}
+              size="5x"
+            />
           </a>
           <a
             href="https://discord.gg/hxRXgsGr"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <i class="fa-brands fa-discord fa-5x"></i>
+            <FontAwesomeIcon
+              className="faIcon faDiscord"
+              icon={faDiscord}
+              size="5x"
+            />
           </a>
-          <a href="YOUR_WHATSAPP_LINK" target="_blank" rel="noopener noreferrer">
-            <i class="fa-brands fa-whatsapp fa-5x"></i>
+          <a
+            href="YOUR_WHATSAPP_LINK"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FontAwesomeIcon
+              className="faIcon faWhatsapp"
+              icon={faWhatsapp}
+              size="5x"
+            />
           </a>
         </div>
       </div>
