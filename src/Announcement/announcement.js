@@ -7,19 +7,20 @@ import { useState } from "react";
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
-import DiscordService from "./DiscordService.js";
-import TelegramUpdates from "./TelegramService.js";
-import WhatsAppService from "./WhatsAppService.js";
 import "./announcement.css";
+import axios from "axios";
+import Cookies from 'js-cookie';
+import { useNavigate } from "react-router-dom";
+
+
 
 function Announcement() {
   const [state, setState] = useState({
-    checkedWhatsApp: true,
     checkedTelegram: true,
     checkedDiscord: true,
   });
 
-  const { checkedWhatsApp, checkedTelegram, checkedDiscord } = state;
+  const { checkedTelegram, checkedDiscord } = state;
   const theme = createTheme({
     palette: {
       ochre: {
@@ -31,6 +32,7 @@ function Announcement() {
     },
   });
   const textRef = useRef();
+  const navigate = useNavigate();
   const sendAnnouncement = () => {
     const temp = textRef.current.value.replace(/ /g, "");
     const announcementText = textRef.current.value;
@@ -38,16 +40,31 @@ function Announcement() {
       return;
     }
     textRef.current.value = "";
-    if (checkedDiscord) {
-      DiscordService.send(announcementText);
+    const token = Cookies.get('token');
+    if (!token || token === 'undefined') {
+      navigate('/');
+      return;
     }
-    if (checkedTelegram) {
-      TelegramUpdates.send(announcementText);
-    }
-    if (checkedWhatsApp) {
-      console.log("WhatsApp");
-      WhatsAppService.send(announcementText);
-    }
+    const creds = JSON.stringify({
+      "message": announcementText,
+      "discord": checkedDiscord ? "true" : "false",
+      "telegram": checkedTelegram ? "true" : "false",
+      "token": token,
+    });
+    let config = {
+      method: 'post',
+      maxBodyLength: Infinity,
+      url: 'http://localhost:1809/announcement',
+      headers: {
+      },
+      data: creds
+    };
+    axios.request(config).then(response => {
+      if (response.status !== 200) {
+        navigate('/');
+        return;
+      }
+    }).catch(console.log);
   };
   const handleCheck = (event) => {
     setState(
@@ -130,7 +147,7 @@ function Announcement() {
               }
               label="Telegram"
             />
-            <FormControlLabel
+            {/* <FormControlLabel
               control={
                 <Checkbox
                   color="ochre"
@@ -140,7 +157,7 @@ function Announcement() {
                 />
               }
               label="WhatsApp"
-            />
+            /> */}
           </FormGroup>
         </ThemeProvider>
         <p style={{ color: "yellow" }}>
