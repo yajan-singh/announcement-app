@@ -12,6 +12,9 @@ import axios from "axios";
 import Cookies from 'js-cookie';
 import { useNavigate } from "react-router-dom";
 import EmojiPicker from 'emoji-picker-react';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import Select from '@mui/material/Select';
 
 
 function addEmoji(emojiData, event) {
@@ -24,6 +27,7 @@ function Announcement() {
   const [state, setState] = useState({
     checkedTelegram: true,
     checkedDiscord: true,
+    type: "both"
   });
 
   const { checkedTelegram, checkedDiscord } = state;
@@ -56,6 +60,7 @@ function Announcement() {
       "discord": checkedDiscord ? "true" : "false",
       "telegram": checkedTelegram ? "true" : "false",
       "token": token,
+      "type": state.type
     });
     let config = {
       method: 'post',
@@ -173,6 +178,22 @@ function Announcement() {
               }
               label="Telegram"
             />
+            <InputLabel sx={{ color: "ochre" }} id="demo-simple-select-label" >Type</InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={state.type}
+              label="Type"
+              color="ochre"
+              sx={{
+                color: "ochre"
+              }}
+              onChange={(event) => setState({ ...state, type: event.target.value })}
+            >
+              <MenuItem value={"both"}>Both</MenuItem>
+              <MenuItem value={"aggresive"}>Aggresive</MenuItem>
+              <MenuItem value={"safe"}>Safe</MenuItem>
+            </Select>
             {/* <FormControlLabel
               control={
                 <Checkbox
