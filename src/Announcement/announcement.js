@@ -191,7 +191,7 @@ function Announcement() {
               onChange={(event) => setState({ ...state, type: event.target.value })}
             >
               <MenuItem value={"both"}>Both</MenuItem>
-              <MenuItem value={"aggresive"}>Aggresive</MenuItem>
+              <MenuItem value={"aggressive"}>Aggresive</MenuItem>
               <MenuItem value={"safe"}>Safe</MenuItem>
             </Select>
             {/* <FormControlLabel
