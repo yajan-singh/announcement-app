@@ -11,8 +11,13 @@ import "./announcement.css";
 import axios from "axios";
 import Cookies from 'js-cookie';
 import { useNavigate } from "react-router-dom";
+import EmojiPicker from 'emoji-picker-react';
 
 
+function addEmoji(emojiData, event) {
+  const textRef = document.getElementById("announcement-text");
+  textRef.value += emojiData.emoji;
+}
 
 function Announcement() {
   const [state, setState] = useState({
@@ -82,6 +87,10 @@ function Announcement() {
     <div className="App">
       <header className="App-header">
         <ThemeProvider theme={theme}>
+          <h1 style={{ color: "yellow" }}>Announcement</h1>
+          <p style={{ color: "yellow" }}>
+            <code>Send announcements to Discord and Telegram</code>
+          </p>
           <Box
             component="form"
             sx={{
@@ -90,32 +99,48 @@ function Announcement() {
             noValidate
             autoComplete="off"
           >
-            <TextField
-              inputRef={textRef}
-              id="announcement-text"
-              label="Announcement"
-              type="search"
-              color="ochre"
+
+            <Box
+              component="form"
               sx={{
-                "& label": {
-                  color: "ochre.dark",
-                },
-                "& label.Mui-focused": {
-                  color: "ochre.light",
-                },
-                "& .MuiInput-underline:after": {
-                  borderBottomColor: "yellow",
-                },
-                "& .MuiOutlinedInput-root": {
-                  "& fieldset": {
-                    borderColor: "ochre.dark",
-                  },
-                },
-                input: {
-                  color: "ochre.light",
-                },
+                "& > :not(style)": { m: 1, width: "25ch" },
               }}
-            />
+              noValidate
+              autoComplete="off"
+            >
+              <TextField
+                inputRef={textRef}
+                id="announcement-text"
+                label="Announcement"
+                type="search"
+                color="ochre"
+                multiline
+                rows={4}
+                sx={{
+                  "& label": {
+                    color: "ochre.dark",
+                  },
+                  "& label.Mui-focused": {
+                    color: "ochre.light",
+                  },
+                  "& .MuiInput-underline:after": {
+                    borderBottomColor: "yellow",
+                  },
+                  "& .MuiOutlinedInput-root": {
+                    "& fieldset": {
+                      borderColor: "ochre.dark",
+                    },
+                  },
+                  "& input": {
+                    color: "ochre.light",
+                  },
+                  "& textarea": {
+                    color: "ochre.light",
+                  },
+                }}
+              />
+              <EmojiPicker theme="dark" open={true} onEmojiClick={addEmoji} height="12em" width="15em" />
+            </Box>
             <Button
               variant="contained"
               color="ochre"
@@ -160,7 +185,7 @@ function Announcement() {
             /> */}
           </FormGroup>
         </ThemeProvider>
-        <p style={{ color: "yellow" }}>
+        {/* <p style={{ color: "yellow" }}>
           <code>Waiting for announcements . . .</code>
         </p>
         <a
@@ -171,9 +196,9 @@ function Announcement() {
           color="ochre"
         >
           Eliteoptions.com
-        </a>
+        </a> */}
       </header>
-    </div>
+    </div >
   );
 }
 

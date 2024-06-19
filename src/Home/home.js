@@ -65,7 +65,8 @@ export default function SignIn() {
     };
 
     const token = Cookies.get('token');
-    if (token !== 'undefined') {
+    console.log(token);
+    if (token !== 'undefined' && token) {
       navigate('/announcement');
     } else {
       console.log('no token');
