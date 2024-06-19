@@ -29,7 +29,9 @@
     "util": "^0.12.5",
     "web-vitals": "^2.1.4",
     "js-cookie": "^3.0.1",
-    "@mui/icons-material": "^5.2.0"
+    "@mui/icons-material": "^5.2.0",
+    "babel-preset-react-app": "10.0.1",
+    "emoji-picker-react": "^3.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
