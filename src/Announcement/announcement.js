@@ -16,6 +16,7 @@ import EmojiPicker from 'emoji-picker-react';
 
 function addEmoji(emojiData, event) {
   const textRef = document.getElementById("announcement-text");
+  console.log(emojiData.emoji);
   textRef.value += emojiData.emoji;
 }
 
