@@ -66,6 +66,7 @@ function Announcement() {
       method: 'post',
       maxBodyLength: Infinity,
       url: 'https://api.rollintrades.com:1809/announcement',
+      // url: 'http://localhost:1809/announcement',
       headers: {
       },
       data: creds
@@ -178,7 +179,6 @@ function Announcement() {
               }
               label="Telegram"
             />
-            <InputLabel sx={{ color: "ochre" }} id="demo-simple-select-label" >Type</InputLabel>
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
@@ -186,7 +186,16 @@ function Announcement() {
               label="Type"
               color="ochre"
               sx={{
-                color: "ochre"
+                color: "yellow", // This applies to the selected value text color
+                '.MuiOutlinedInput-notchedOutline': {
+                  borderColor: 'yellow', // This applies to the border color
+                },
+                '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                  borderColor: 'yellow', // This applies to the border color when focused
+                },
+                '.MuiSelect-icon': {
+                  color: 'yellow', // This applies to the drop-down icon color
+                },
               }}
               onChange={(event) => setState({ ...state, type: event.target.value })}
             >
