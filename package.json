@@ -72,6 +72,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.16.12",
     "@types/node-telegram-bot-api": "^0.64.7"
   }
 }
