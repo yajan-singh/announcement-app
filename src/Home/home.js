@@ -10,8 +10,6 @@ import FeatureWithSteps from "components/features/TwoColWithSteps.js";
 import Pricing from "components/pricing/ThreePlans.js";
 import Testimonial from "components/testimonials/TwoColumnWithImageAndRating.js";
 import FAQ from "components/faqs/SingleCol.js";
-import GetStarted from "components/cta/GetStarted";
-import Footer from "components/footers/FiveColumnWithBackground.js";
 import discordScreenShot from "images/discordss.png";
 import discordInvitePage from "images/discordinvite.png";
 import prototypeIllustrationImageSrc from "images/prototype-illustration.svg";
