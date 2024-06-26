@@ -1,21 +1,26 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
+import "tailwindcss/lib/css/preflight.css";
+// import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Login from "./Login/login.js";
 import Home from "./Home/home.js";
+import Buy from "./Buy/buy.js";
 import Announcement from "./Announcement/announcement.js";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
     <Routes>
-      <Route path="/" element={<Home />} />
+      <Route path="/login" element={<Login />} />
       <Route path="announcement" element={<Announcement />} />
+      <Route path="/" element={<Home />} />
+      <Route path="/buy" element={<Buy />} />
     </Routes>
   </BrowserRouter>
 );

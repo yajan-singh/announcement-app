@@ -1,157 +1,381 @@
-import './home.css';
-import * as React from 'react';
-import axios from "axios";
-import Cookies from 'js-cookie';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
-import Box from '@mui/material/Box';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { useNavigate } from "react-router-dom";
+import "./style.css";
+import React from "react";
+import tw from "twin.macro";
+import AnimationRevealPage from "helpers/AnimationRevealPage.js";
+import Hero from "components/hero/TwoColumnWithInput.js";
+import Features from "components/features/ThreeColWithSideImage.js";
+import MainFeature from "components/features/TwoColWithButton.js";
+import MainFeature2 from "components/features/TwoColWithTwoHorizontalFeaturesAndButton.js";
+import FeatureWithSteps from "components/features/TwoColWithSteps.js";
+import Pricing from "components/pricing/ThreePlans.js";
+import Testimonial from "components/testimonials/TwoColumnWithImageAndRating.js";
+import FAQ from "components/faqs/SingleCol.js";
+import GetStarted from "components/cta/GetStarted";
+import Footer from "components/footers/FiveColumnWithBackground.js";
+import discordScreenShot from "images/discordss.png";
+import discordInvitePage from "images/discordinvite.png";
+import prototypeIllustrationImageSrc from "images/prototype-illustration.svg";
+import { ReactComponent as BriefcaseIcon } from "feather-icons/dist/icons/briefcase.svg";
+import { ReactComponent as MoneyIcon } from "feather-icons/dist/icons/dollar-sign.svg";
 
-function Copyright(props) {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link color="inherit" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
-        Quantitech
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
+export default () => {
+    const Subheading = tw.span`uppercase tracking-widest font-bold text-primary-500`;
+    const HighlightedText = tw.span`text-primary-500`;
 
-// TODO remove, this demo shouldn't need to reset the theme.
+    return (
 
-const defaultTheme = createTheme({
-  palette: {
-    mode: 'dark',
-    primary: {
-      main: '#E3D026',
-    },
-    secondary: {
-      main: '#E9DB9F',
-    },
-  },
-});
 
-export default function SignIn() {
-  const navigate = useNavigate();
+        <AnimationRevealPage>
+            <Hero roundedHeaderButton={true} />
+            <Features
+                subheading={<Subheading>Features</Subheading>}
+                heading={
+                    <>
+                        Highlights About Our <HighlightedText>Services.</HighlightedText>
+                    </>
+                }
+            />
+            <MainFeature
+                subheading={<Subheading>Quality Work</Subheading>}
+                imageSrc={discordScreenShot}
+                imageBorder={true}
+                imageDecoratorBlob={true}
+            />
+            <FeatureWithSteps
+                subheading={<Subheading>How You Can Get Started.</Subheading>}
+                heading={
+                    <>
+                        Easy to <HighlightedText>Join.</HighlightedText>
+                    </>
+                }
+                textOnLeft={false}
+                imageSrc={discordInvitePage}
+                imageDecoratorBlob={true}
+                decoratorBlobCss={tw`xl:w-40 xl:h-40 opacity-15 -translate-x-1/2 left-1/2`}
+            />
+            <MainFeature2
+                subheading={<Subheading>VALUES</Subheading>}
+                heading={
+                    <>
+                        Why Trade With <HighlightedText>Us?</HighlightedText>
+                    </>
+                }
+                imageSrc={prototypeIllustrationImageSrc}
+                showDecoratorBlob={false}
+                features={[
+                    {
+                        Icon: MoneyIcon,
+                        title: "Maximizing Profit Strategies",
+                        description:
+                            "Discover techniques to maximize your trading profits and leverage advanced tools for better returns.",
+                        iconContainerCss: tw`bg-green-300 text-green-800`,
+                    },
+                    {
+                        Icon: BriefcaseIcon,
+                        title: "Professional Trading Insights",
+                        description:
+                            "Access expert trading analysis and insights to make informed decisions and trade like a pro.",
+                        iconContainerCss: tw`bg-red-300 text-red-800`,
+                    },
+                ]}
+            />
+            <Pricing
+                subheading={<Subheading>Pricing</Subheading>}
+                heading={
+                    <>
+                        Reasonable & Flexible{" "}
+                        <HighlightedText>Subscriptions.</HighlightedText>
+                    </>
+                }
+                plans={[
+                    {
+                        name: "Free",
+                        price: "$0.00",
+                        duration: "Monthly",
+                        mainFeature: "For All",
+                        features: [
+                            "Limited Access to Community",
+                            "Daily Tips",
+                            "Basic Support",
+                        ],
+                    },
+                    {
+                        name: "Pro",
+                        price: "$9.99",
+                        duration: "Monthly",
+                        mainFeature: "For New Traders",
+                        features: [
+                            "All Free Plan Features",
+                            "Unlimited Chat Access",
+                            "Exclusive Insights And Realtime News",
+                            "Weekly Webinars",
+                            "Priority Assistance",
+                        ],
+                        // featured: true,
+                    },
+                    {
+                        name: "Elite",
+                        price: "$24.99",
+                        duration: "Monthly",
+                        mainFeature: "For Rolling Minds",
+                        features: [
+                            "All Pro Plan Features",
+                            "Full-Access To Community",
+                            "1-on-1 Coaching",
+                            "Advanced Tools",
+                            "24/7 Support",
+                        ],
+                    },
+                ]}
+            />
+            <Testimonial
+                subheading={<Subheading>Testimonials</Subheading>}
+                heading={
+                    <>
+                        Our Clients <HighlightedText>Love Us.</HighlightedText>
+                    </>
+                }
+                testimonials={[
+                    {
+                        stars: 5,
+                        profileImageSrc:
+                            "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3.25&w=512&h=512&q=80",
+                        heading: "Love the admins, love the community!",
+                        quote:
+                            "I've been part of many trading communities, but this one stands out. The insights and support I've received here have significantly improved my trading skills. The webinars are incredibly informative and worth every penny.",
+                        customerName: "Charlotte Hale",
+                        customerTitle: "Director, Delos Inc.",
+                    },
+                    {
+                        stars: 5,
+                        profileImageSrc:
+                            "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=512&h=512&q=80",
+                        heading: "From beginner to master trader.",
+                        quote:
+                            "As a beginner, I was overwhelmed by the complexity of trading. This community has been a game-changer for me. The daily tips and expert advice have helped me gain confidence and make better trades.",
+                        customerName: "Adam Cuppy",
+                        customerTitle: "Founder, EventsNYC",
+                    },
+                ]}
+            />
+            <FAQ
+                subheading={<Subheading>FAQS</Subheading>}
+                heading={
+                    <>
+                        You have <HighlightedText>Questions ?</HighlightedText>
+                    </>
+                }
+                faqs={[
+                    {
+                        question: "How do I join?",
+                        answer: "Find the Join Now buttons to join the Discord community",
+                    },
+                    {
+                        question: "What trading platforms do you support?",
+                        answer:
+                            "We primarily support trading platforms such as Discord and Telegram. These platforms are central to our community's communication and support structure..",
+                    },
+                    {
+                        question: "How can I get started with trading?",
+                        answer:
+                            "Getting started is easy! Join our community on Discord or Telegram to access beginner-friendly resources, guides, and mentorship. We'll help you understand the basics and get you trading confidently in no time.",
+                    },
+                    {
+                        question: "What support do you offer for beginners?",
+                        answer:
+                            "We offer a variety of support for beginners, including educational resources, live trading sessions, mentorship from experienced traders, and a supportive community forum where you can ask questions and learn from others.",
+                    },
+                    {
+                        question: "How do I stay updated on market trends and news?",
+                        answer:
+                            "Stay informed with our community's curated market updates, real-time alerts, and expert analysis shared on Discord and Telegram. We keep you updated on the latest trends and news that impact your trading decisions.",
+                    },
+                    {
+                        question: "Is there a cost to join your trading community?",
+                        answer:
+                            "Joining our community is completely free! We believe in democratizing access to trading education and support. Some advanced features or personalized mentorship may involve a fee, but basic community access is always free.",
+                    },
+                ]}
+            />
+        </AnimationRevealPage>
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-
-    let creds = JSON.stringify({
-      "email": data.get('email'),
-      "password": data.get('password')
-    });
-
-    let config = {
-      method: 'post',
-      maxBodyLength: Infinity,
-      url: 'https://api.rollintrades.com:1809/login',
-      headers: {
-      },
-      data: creds
-    };
-
-    const token = Cookies.get('token');
-    console.log(token);
-    if (token !== 'undefined' && token) {
-      navigate('/announcement');
-    } else {
-      console.log('no token');
-      axios.request(config).then(response => {
-        if (response.status !== 200) {
-          navigate('/');
-          return;
-        }
-        Cookies.set('token', response.data.token, { expires: 1, secure: true });
-        navigate('/announcement');
-      }).catch(console.log);
-
-    }
-
-  };
-
-  return (
-    <>
-      <ThemeProvider theme={defaultTheme}>
-        <Container component="main" maxWidth="xs">
-          <CssBaseline />
-          <Box
-            sx={{
-              marginTop: 8,
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-            }}
-          >
-            <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-              <LockOutlinedIcon />
-            </Avatar>
-            <Typography component="h1" variant="h5">
-              Sign in
-            </Typography>
-            <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
-                autoFocus
-              />
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-              />
-              <FormControlLabel
-                control={<Checkbox value="remember" color="primary" />}
-                label="Remember me"
-              />
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                sx={{ mt: 3, mb: 2 }}
-              >
-                Sign In
-              </Button>
-              {/* <Grid container>
-              <Grid item xs>
-                <Link href="#" variant="body2">
-                  Forgot password?
-                </Link>
-              </Grid>
-              <Grid item>
-                <Link href="#" variant="body2">
-                  {"Don't have an account? Sign Up"}
-                </Link>
-              </Grid>
-            </Grid> */}
-            </Box>
-          </Box>
-          <Copyright sx={{ mt: 8, mb: 4 }} />
-        </Container>
-      </ThemeProvider>
-    </>
-  );
-}
+        // <AnimationRevealPage>
+        //     <Hero roundedHeaderButton={true} />
+        //     <Features
+        //         subheading={<Subheading>Features</Subheading>}
+        //         heading={
+        //             <>
+        //                 Highlights About Our <HighlightedText>Services.</HighlightedText>
+        //             </>
+        //         }
+        //     />
+        //     <MainFeature
+        //         subheading={<Subheading>Quality Work</Subheading>}
+        //         imageSrc={discordScreenShot}
+        //         imageBorder={true}
+        //         imageDecoratorBlob={true}
+        //     />
+        //     <FeatureWithSteps
+        //         subheading={<Subheading>How You Can Get Started.</Subheading>}
+        //         heading={
+        //             <>
+        //                 Easy to <HighlightedText>Join.</HighlightedText>
+        //             </>
+        //         }
+        //         textOnLeft={false}
+        //         imageSrc={discordInvitePage}
+        //         imageDecoratorBlob={true}
+        //         decoratorBlobCss={tw`xl:w-40 xl:h-40 opacity-15 -translate-x-1/2 left-1/2`}
+        //     />
+        //     <MainFeature2
+        //         subheading={<Subheading>VALUES</Subheading>}
+        //         heading={
+        //             <>
+        //                 Why Trade With <HighlightedText>Us?</HighlightedText>
+        //             </>
+        //         }
+        //         imageSrc={prototypeIllustrationImageSrc}
+        //         showDecoratorBlob={false}
+        //         features={[
+        //             {
+        //                 Icon: MoneyIcon,
+        //                 title: "Maximizing Profit Strategies",
+        //                 description:
+        //                     "Discover techniques to maximize your trading profits and leverage advanced tools for better returns.",
+        //                 iconContainerCss: tw`bg-green-300 text-green-800`,
+        //             },
+        //             {
+        //                 Icon: BriefcaseIcon,
+        //                 title: "Professional Trading Insights",
+        //                 description:
+        //                     "Access expert trading analysis and insights to make informed decisions and trade like a pro.",
+        //                 iconContainerCss: tw`bg-red-300 text-red-800`,
+        //             },
+        //         ]}
+        //     />
+        //     {/* <Pricing
+        //         id="pricing"
+        //         subheading={<Subheading>Pricing</Subheading>}
+        //         heading={
+        //             <>
+        //                 Reasonable & Flexible{" "}
+        //                 <HighlightedText>Subscriptions.</HighlightedText>
+        //             </>
+        //         }
+        //         plans={[
+        //             {
+        //                 name: "Free",
+        //                 price: "$0.00",
+        //                 duration: "Monthly",
+        //                 mainFeature: "For All",
+        //                 features: [
+        //                     "Limited Access to Community",
+        //                     "Daily Tips",
+        //                     "Basic Support",
+        //                 ],
+        //             },
+        //             {
+        //                 name: "Pro",
+        //                 price: "$9.99",
+        //                 duration: "Monthly",
+        //                 mainFeature: "For New Traders",
+        //                 features: [
+        //                     "All Free Plan Features",
+        //                     "Unlimited Chat Access",
+        //                     "Exclusive Insights And Realtime News",
+        //                     "Weekly Webinars",
+        //                     "Priority Assistance",
+        //                 ],
+        //                 featured: true,
+        //             },
+        //             {
+        //                 name: "Elite",
+        //                 price: "$24.99",
+        //                 duration: "Monthly",
+        //                 mainFeature: "For Rolling Minds",
+        //                 features: [
+        //                     "All Pro Plan Features",
+        //                     "Full-Access To Community",
+        //                     "1-on-1 Coaching",
+        //                     "Advanced Tools",
+        //                     "24/7 Support",
+        //                 ],
+        //             },
+        //         ]}
+        //     /> */}
+        //     <Testimonial
+        //         id="testimonials"
+        //         subheading={<Subheading>Testimonials</Subheading>}
+        //         heading={
+        //             <>
+        //                 Our Clients <HighlightedText>Love Us.</HighlightedText>
+        //             </>
+        //         }
+        //         testimonials={[
+        //             {
+        //                 stars: 5,
+        //                 profileImageSrc:
+        //                     "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3.25&w=512&h=512&q=80",
+        //                 heading: "Love the admins, love the community!",
+        //                 quote:
+        //                     "I've been part of many trading communities, but this one stands out. The insights and support I've received here have significantly improved my trading skills. The webinars are incredibly informative and worth every penny.",
+        //                 customerName: "Charlotte Hale",
+        //                 customerTitle: "Director, Delos Inc.",
+        //             },
+        //             {
+        //                 stars: 5,
+        //                 profileImageSrc:
+        //                     "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=512&h=512&q=80",
+        //                 heading: "From beginner to master trader.",
+        //                 quote:
+        //                     "As a beginner, I was overwhelmed by the complexity of trading. This community has been a game-changer for me. The daily tips and expert advice have helped me gain confidence and make better trades.",
+        //                 customerName: "Adam Cuppy",
+        //                 customerTitle: "Founder, EventsNYC",
+        //             },
+        //         ]}
+        //     />
+        //     <FAQ
+        //         id="faq"
+        //         subheading={<Subheading>FAQS</Subheading>}
+        //         heading={
+        //             <>
+        //                 You have <HighlightedText>Questions ?</HighlightedText>
+        //             </>
+        //         }
+        //         faqs={[
+        //             {
+        //                 question: "How do I join?",
+        //                 answer: "Find the Join Now buttons to join the Discord community",
+        //             },
+        //             {
+        //                 question: "What trading platforms do you support?",
+        //                 answer:
+        //                     "We primarily support trading platforms such as Discord and Telegram. These platforms are central to our community's communication and support structure..",
+        //             },
+        //             {
+        //                 question: "How can I get started with trading?",
+        //                 answer:
+        //                     "Getting started is easy! Join our community on Discord or Telegram to access beginner-friendly resources, guides, and mentorship. We'll help you understand the basics and get you trading confidently in no time.",
+        //             },
+        //             {
+        //                 question: "What support do you offer for beginners?",
+        //                 answer:
+        //                     "We offer a variety of support for beginners, including educational resources, live trading sessions, mentorship from experienced traders, and a supportive community forum where you can ask questions and learn from others.",
+        //             },
+        //             {
+        //                 question: "How do I stay updated on market trends and news?",
+        //                 answer:
+        //                     "Stay informed with our community's curated market updates, real-time alerts, and expert analysis shared on Discord and Telegram. We keep you updated on the latest trends and news that impact your trading decisions.",
+        //             },
+        //             {
+        //                 question: "Is there a cost to join your trading community?",
+        //                 answer:
+        //                     "Joining our community is completely free! We believe in democratizing access to trading education and support. Some advanced features or personalized mentorship may involve a fee, but basic community access is always free.",
+        //             },
+        //         ]}
+        //     />
+        //     <GetStarted />
+        //     <Footer />
+        // </AnimationRevealPage>
+    );
+};
