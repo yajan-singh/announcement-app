@@ -122,7 +122,7 @@ export default ({
                 ))}
               </PlanFeatures>
               <PlanAction>
-                <a href="https://discord.com/oauth2/authorize?client_id=1247684376947462164&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fbuy&scope=identify+email">
+                <a href="https://discord.com/oauth2/authorize?client_id=1247684376947462164&response_type=code&redirect_uri=http%3A%2F%2Frollintrades.com%2Fbuy&scope=identify+email">
                   <BuyNowButton className={`${plan.featured ? "bg-gray-100 text-primary-500 hocus:bg-gray-300 hocus:text-primary-800" : ""}`}>{primaryButtonText}</BuyNowButton>
                 </a>
               </PlanAction>
