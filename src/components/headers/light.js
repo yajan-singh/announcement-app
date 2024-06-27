@@ -76,7 +76,7 @@ export default ({ roundedHeaderButton = false, logoLink, links, className, colla
       {/* <NavLink href="/#" tw="lg:ml-12!">
         Login
       </NavLink> */}
-      <PrimaryLink css={roundedHeaderButton && tw`rounded-full`} href="https://discord.com/oauth2/authorize?client_id=1247684376947462164&response_type=code&redirect_uri=http%3A%2F%2Frollintrades.com%2Fbuy&scope=identify+email">Login With Discord</PrimaryLink>
+      <PrimaryLink css={roundedHeaderButton && tw`rounded-full`} href="https://discord.com/oauth2/authorize?client_id=1247684376947462164&response_type=code&redirect_uri=https%3A%2F%2Frollintrades.com%2Fbuy&scope=identify+email">Login With Discord</PrimaryLink>
     </NavLinks>
   ];
 
