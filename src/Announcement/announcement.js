@@ -64,8 +64,8 @@ function Announcement() {
     let config = {
       method: 'post',
       maxBodyLength: Infinity,
-      // url: 'https://api.rollintrades.com:1809/announcement',
-      url: 'http://localhost:1809/announcement',
+      url: 'https://api.rollintrades.com:1809/announcement',
+      // url: 'http://localhost:1809/announcement',
       headers: {
       },
       data: creds
