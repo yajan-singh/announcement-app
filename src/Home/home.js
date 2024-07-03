@@ -155,7 +155,7 @@ export default () => {
             // featured: true,
           },
           {
-            name: "Pro Max",
+            name: "Elite",
             price: "$24.99",
             duration: "Monthly",
             mainFeature: "For Rolling Minds",
