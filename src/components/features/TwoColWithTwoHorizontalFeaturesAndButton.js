@@ -11,6 +11,7 @@ import TeamIllustrationSrc from "images/team-illustration-2.svg";
 import { ReactComponent as SvgDotPattern } from "images/dot-pattern.svg";
 import { ReactComponent as BriefcaseIcon } from "feather-icons/dist/icons/briefcase.svg";
 import { ReactComponent as MoneyIcon } from "feather-icons/dist/icons/dollar-sign.svg";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Container = tw.div`relative`;
 const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-xl mx-auto py-20 md:py-24 items-center`;
@@ -41,16 +42,21 @@ const Heading = tw(
 )`mt-4 font-black text-left text-3xl sm:text-4xl lg:text-5xl text-center md:text-left leading-tight`;
 const Description = tw.p`mt-8 text-center md:text-left text-sm md:text-base lg:text-lg font-medium leading-relaxed text-secondary-100`;
 
-const Features = tw.div`mx-auto md:mx-0 flex flex-col lg:flex-row max-w-xs lg:max-w-none`;
-const Feature = tw.div`mt-10 lg:mt-8 flex items-center md:items-start flex-col md:mr-8 last:mr-0`;
+// const Features = tw.div`mx-auto md:mx-0 flex flex-col lg:flex-row max-w-xs lg:max-w-none`;
+// const Feature = tw.div`mt-10 lg:mt-8 flex items-center md:items-start flex-col md:mr-8 last:mr-0`;
+
+const Features = tw.div`grid grid-cols-1 md:grid-cols-3 gap-4 mt-8`;
+const Feature = tw.div`flex flex-col items-center text-center p-4 rounded-lg`;
 
 const FeatureHeadingContainer = tw.div`flex items-center`;
 const FeatureIconContainer = styled.div`
-  ${tw`mx-auto inline-block border border-primary-500 text-primary-500 text-center rounded p-2 flex-shrink-0`}
-  ${(props) => [
-    props.iconRoundedFull && tw`rounded-full`,
-    props.iconFilled && tw`border-0 bg-primary-500 text-gray-100`,
-  ]}
+  ${tw`mx-auto inline-block border border-primary-500 text-primary-500 text-center rounded-full p-2 flex-shrink-0`}
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  ${(props) => [props.iconFilled && tw`border-0 bg-primary-500 text-gray-100`]}
   svg {
     ${tw`w-5 h-5`}
   }
@@ -134,10 +140,9 @@ export default ({
                   <FeatureHeadingContainer>
                     <FeatureIconContainer
                       iconFilled={iconFilled}
-                      iconRoundedFull={iconRoundedFull}
                       css={feature.iconContainerCss || iconContainerCss}
                     >
-                      {<feature.Icon />}
+                      <FontAwesomeIcon icon={feature.Icon} />
                     </FeatureIconContainer>
                     <FeatureHeading>{feature.title}</FeatureHeading>
                   </FeatureHeadingContainer>

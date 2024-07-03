@@ -65,14 +65,14 @@ export default ({
   const defaultSteps = [
     {
       heading: "Click Join Now",
-      description: "Find the Join Now buttons to get an invite.",
+      description: "Click On Join Now.",
     },
     {
-      heading: "Join",
-      description: "Create or link to your Discord account.",
+      heading: "Sign Up",
+      description: "Fill information and select what suits you best.",
     },
     {
-      heading: "Collaborate",
+      heading: "Learn & Print Money",
       description:
         "Explore and learn uses the various features of this community and start socializing and begin learning.",
     },

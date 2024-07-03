@@ -8,17 +8,19 @@ import {
   Subheading as SubheadingBase,
 } from "components/misc/Headings.js";
 import { SectionDescription } from "components/misc/Typography.js";
-
-import defaultCardImage from "images/shield-icon.svg";
-
 import { ReactComponent as SvgDecoratorBlob3 } from "images/svg-decorator-blob-3.svg";
-
-import SupportIconImage from "images/support-icon.svg";
-import ShieldIconImage from "images/shield-icon.svg";
-import CustomizeIconImage from "images/customize-icon.svg";
-import FastIconImage from "images/fast-icon.svg";
-import ReliableIconImage from "images/reliable-icon.svg";
-import SimpleIconImage from "images/simple-icon.svg";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faBolt,
+  faChartLine,
+  faBook,
+  faComments,
+  faNewspaper,
+  faUserSecret,
+  faFish,
+  faChartBar,
+  faHeadset,
+} from "@fortawesome/free-solid-svg-icons";
 
 const Container = tw.div`relative`;
 
@@ -37,10 +39,15 @@ const Column = styled.div`
 
 const Card = styled.div`
   ${tw`flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left h-full mx-4 px-2 py-8`}
-  .imageContainer {
+  .iconContainer {
     ${tw`border text-center rounded-full p-5 flex-shrink-0`}
-    img {
-      ${tw`w-6 h-6`}
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    svg {
+      ${tw`w-5 h-5`}
     }
   }
 
@@ -65,7 +72,7 @@ export default ({
   cards = null,
   heading = "Amazing Features",
   subheading = "Features",
-  description = "Discover the key benefits and features of our top-tier services designed to enhance your experience and meet your needs efficiently and effectively.",
+  description = "A Comprehensive Trading and Investing Package",
 }) => {
   /*
    * This componets has an array of object denoting the cards defined below. Each object in the cards array can have the key (Change it according to your need, you can also add more objects to have more cards in this feature component) or you can directly pass this using the cards prop:
@@ -77,40 +84,58 @@ export default ({
 
   const defaultCards = [
     {
-      imageSrc: ShieldIconImage,
-      title: "In-Depth Market Analysis",
+      icon: faBolt,
+      title: "Live Options Trading Alerts",
       description:
-        "Access thorough market analyses to understand trends and make informed trading decisions. Stay ahead with our expert insights and data-driven reports.",
+        "Stay on top of the trading opportunities with our real-time alerts, delivered directly to your device via Telegram or Discord",
     },
     {
-      imageSrc: SimpleIconImage,
+      icon: faChartLine,
+      title: "Long-Term Stock Investing Alerts",
+      description:
+        "Build a solid investment portfolio with our carefully selected stock recommendations, ensuring you have well-rounded approach to your financal growth.",
+    },
+    {
+      icon: faComments,
       title: "Community Chat Room",
       description:
-        "Join our vibrant community of traders in our 24/7 chatroom on Discord and Telegram. Share insights, discuss strategies, and gain valuable advice from fellow traders in real-time.",
+        "Become a part of our community of traders in our 24/7 discord chatroom. Engage in real-time discussions, share insights, and learn from fellow traders. Participate in the Q&A segment to get your trading questions answered.",
     },
     {
-      imageSrc: CustomizeIconImage,
-      title: "Educational Resources",
+      icon: faBook,
+      title: "Educational Content",
       description:
-        "Enhance your trading knowledge with our comprehensive educational materials. Learn about risk management, account growth, high-probability setups, trading psychology, and more.",
+        "Boost your trading knowledge with our comprehensive educational materials covering account and risk management, how to grow an account, identifying high-probability trade setups, trading psychology, and more.",
     },
     {
-      imageSrc: ReliableIconImage,
-      title: "Real-Time News Updates",
+      icon: faNewspaper,
+      title: "Market Updates",
       description:
-        "Stay informed with real-time news updates directly related to your trading interests. Receive critical information as soon as it breaks.",
+        "Keep up with the latest market news and insights with our daily updates, helping you stay informed and make timely decisions.",
     },
     {
-      imageSrc: FastIconImage,
-      title: "Real-Time Trade Alerts",
+      icon: faUserSecret,
+      title: "Insider Trading Data",
       description:
-        "Get instant notifications of all our trades directly. Track entries, exits, and other key trade details live to stay ahead in the market.",
+        "Leverage exclusive insider trading data to make informed investment decisions, giving you an edge in the market.",
     },
     {
-      imageSrc: SupportIconImage,
-      title: "Responsive Admin Support",
+      icon: faFish,
+      title: "Unusual Whale Alerts",
       description:
-        "Our team is always available to assist you. Reach out to us anytime via Telegram or Discord for prompt and helpful responses to your inquiries.",
+        "Track the movements of major market players with our unusual whale alerts, ensuring you’re aware of significant market shifts.",
+    },
+    {
+      icon: faChartBar,
+      title: "Weekly Charts and Ideas",
+      description:
+        "Receive detailed charts every Sunday with trade ideas, key support, and resistance levels to help you plan and strategize for the week ahead.",
+    },
+    {
+      icon: faHeadset,
+      title: "Responsive Customer Support",
+      description:
+        "Our team is always ready to assist you with any questions you may have. Reach out to us via direct message on Telegram chat or discord chat for prompt support.",
     },
   ];
 
@@ -126,8 +151,8 @@ export default ({
         {cards.map((card, i) => (
           <Column key={i}>
             <Card>
-              <span className="imageContainer">
-                <img src={card.imageSrc || defaultCardImage} alt="" />
+              <span className="iconContainer">
+                <FontAwesomeIcon icon={card.icon} />
               </span>
               <span className="textContainer">
                 <span className="title">{card.title || "Fully Secure"}</span>

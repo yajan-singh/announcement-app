@@ -10,6 +10,7 @@ import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
 import TeamIllustrationSrc from "images/design-illustration.svg";
 import { ReactComponent as SvgDotPattern } from "images/dot-pattern.svg";
 
+const HighlightedText = tw.span`text-primary-500`;
 const Container = tw.div`relative`;
 const TwoColumn = tw.div`flex flex-col md:flex-row justify-between max-w-screen-xl mx-auto py-20 md:py-24 items-center`;
 const Column = tw.div`w-full max-w-md mx-auto md:max-w-none md:mx-0`;
@@ -48,10 +49,36 @@ export default ({
   subheading = "Our Expertise",
   heading = (
     <>
-      Our Community, <span tw="text-primary-500">Our Services.</span>
+      What we do on a, <HighlightedText>Daily Basis.</HighlightedText>
     </>
   ),
-  description = "We are dedicated to helping you learn and excel in trading. Join our community on Discord and Telegram for expert support and guidance.",
+  description = (
+    <>
+      <p>
+        <strong>Morning Overview:</strong> Each day begins with a comprehensive
+        overview of the market and identification of important levels for our
+        watchlist of the week. We trade only the tickers listed in the watchlist
+        and those with compelling trade plans. Occasionally, we also trade
+        tickers based on the day’s volatility and volume.
+      </p>
+      <p>
+        <strong>Trade Alerts:</strong> We provide trade alerts in two
+        categories:
+      </p>
+      <ul>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;Safe Trades: low caution/good gains</li>
+        <li>
+          &nbsp;&nbsp;&nbsp;&nbsp;Aggressive Trades: high caution/best gains
+        </li>
+      </ul>
+      <p>
+        <strong>Commentary and Education:</strong> Along side our trade alerts,
+        we offer commentary for educational purposes. We use technical analysis
+        and insights from over five years of experience to keep the group
+        well-informed.
+      </p>
+    </>
+  ),
   primaryButtonText = "Join Now",
   primaryButtonUrl = "/#pricing",
   imageSrc = TeamIllustrationSrc,
